@@ -23,7 +23,7 @@ module SpreePaypalExpress
       app.config.spree.payment_methods << Spree::Gateway::PayPalExpress
     end
 
-    initializer "spree.paypal_express.preferences" do |app|
+    initializer "spree.paypal_express.preferences", before: :load_config_initializers do |app|
       Spree::AppConfiguration.class_eval do
         preference :paypal_button_source, :string
       end
